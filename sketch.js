@@ -7,6 +7,8 @@ const SHAPE_OFFSET = 25;
 let shouldDraw = false;
 let shape = 'x';
 
+let winningShape = null;
+
 let gameEnd = false;
 
 let gameState = [
@@ -34,10 +36,12 @@ function draw() {
     background(220);
     fill(0);
     textSize(100);
-    if (shape === 'x') {
+    if (winningShape === 'x') {
       text('X WON', 140, 330);
-    } else {
+    } else if (winningShape === 'o') {
       text('O WON', 140, 330);
+    } else if (winningShape === null) {
+      text('DRAW', 140, 330);
     }
   }
 
@@ -88,7 +92,20 @@ function mouseClicked() {
   shouldDraw = true;
 }
 
+function checkForDraw() {
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      if (gameState[i][j] === '-') return;
+    }
+  }
+
+  gameEnd = true;
+}
+
 function checkWinner() {
+  // Check if game is drawn
+  checkForDraw();
+
   // Check rows and columns
   for (let i = 0; i < 3; i++) {
     if (
@@ -96,7 +113,7 @@ function checkWinner() {
       gameState[i][0] === gameState[i][1] &&
       gameState[i][1] === gameState[i][2]
     ) {
-      shape = gameState[i][0];
+      winningShape = gameState[i][0];
       gameEnd = true;
     }
     if (
@@ -104,7 +121,7 @@ function checkWinner() {
       gameState[0][i] === gameState[1][i] &&
       gameState[1][i] === gameState[2][i]
     ) {
-      shape = gameState[0][i];
+      winningShape = gameState[0][i];
       gameEnd = true;
     }
   }
@@ -115,7 +132,7 @@ function checkWinner() {
     gameState[0][0] === gameState[1][1] &&
     gameState[1][1] === gameState[2][2]
   ) {
-    shape = gameState[0][0];
+    winningShape = gameState[0][0];
     gameEnd = true;
   }
 
@@ -125,7 +142,7 @@ function checkWinner() {
     gameState[0][2] === gameState[1][1] &&
     gameState[1][1] === gameState[2][0]
   ) {
-    shape = gameState[0][2];
+    winningShape = gameState[0][2];
     gameEnd = true;
   }
 }
