@@ -1,8 +1,7 @@
-const WIDTH = 600;
-const HEIGHT = 600;
-const CELL_WIDTH = WIDTH / 3;
+const CANVAS_SIZE = 600;
+const CELL_WIDTH = CANVAS_SIZE / 3;
 
-const SHAPE_OFFSET = 25;
+const SHAPE_OFFSET = 22;
 
 let shouldDraw = false;
 let shape = 'x';
@@ -18,13 +17,13 @@ let gameState = [
 ];
 
 function setup() {
-  frameRate(5);
-  createCanvas(WIDTH, HEIGHT);
+  frameRate(10);
+  createCanvas(CANVAS_SIZE, CANVAS_SIZE);
   background(220);
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      line(i * CELL_WIDTH, j * CELL_WIDTH, width, j * CELL_WIDTH);
-      line(i * CELL_WIDTH, j * CELL_WIDTH, i * CELL_WIDTH, height);
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
+      line(i * CELL_WIDTH, j * CELL_WIDTH, CELL_WIDTH, j * CELL_WIDTH);
+      line(i * CELL_WIDTH, j * CELL_WIDTH, i * CELL_WIDTH, CELL_WIDTH);
       fill(255, 255, 255);
     }
   }
