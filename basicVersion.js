@@ -10,10 +10,9 @@ let cellOffset = 22;
 function setup() {
   createCanvas(CANVAS_SIZE, CANVAS_SIZE);
   background(220);
-  for (let row = 0; row < 4; row++) {
-    for (let col = 0; col < 4; col++) {
-      line(row * CELL_WIDTH, col * CELL_WIDTH, CELL_WIDTH, col * CELL_WIDTH);
-      line(row * CELL_WIDTH, col * CELL_WIDTH, row * CELL_WIDTH, CELL_WIDTH);
+  for (let row = 0; row < 3; row++) {
+    for (let col = 0; col < 3; col++) {
+      square(row * CELL_WIDTH, col * CELL_WIDTH, CELL_WIDTH);
       fill(255, 255, 255);
     }
   }

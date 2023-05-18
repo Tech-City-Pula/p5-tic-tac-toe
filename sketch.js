@@ -20,10 +20,9 @@ function setup() {
   frameRate(10);
   createCanvas(CANVAS_SIZE, CANVAS_SIZE);
   background(220);
-  for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
-      line(i * CELL_WIDTH, j * CELL_WIDTH, CELL_WIDTH, j * CELL_WIDTH);
-      line(i * CELL_WIDTH, j * CELL_WIDTH, i * CELL_WIDTH, CELL_WIDTH);
+  for (let i = 0; i < 3; i++) {
+    for (let j = 0; j < 3; j++) {
+      square(i * CELL_WIDTH, j * CELL_WIDTH, CELL_WIDTH);
       fill(255, 255, 255);
     }
   }
